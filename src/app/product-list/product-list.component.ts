@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductData} from "./ProductData";
 
 interface productData {
@@ -9,10 +9,28 @@ interface productData {
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+
+  constructor() {
+    this._filter = "Test";
+    this.filteredProducts = this.products
+  }
+
   tableTitle: string = "Product List";
   showImage: boolean = false;
-  filter: string = "Test";
+
+
+  _filter: string;
+  get filter(): string {
+    return this._filter
+  }
+
+  set filter(value: string) {
+    this._filter = value
+    this.filteredProducts = this.filter ? this.performFilter(this.filter) : this.products
+  }
+
+  filteredProducts: ProductData[];
 
 
   products: ProductData[] = [
@@ -70,5 +88,15 @@ export class ProductListComponent {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  ngOnInit(): void {
+    console.log("The component is initialized")
+  }
+
+  performFilter(filterBy: string): ProductData[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: ProductData) =>
+      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1)
   }
 }
