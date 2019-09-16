@@ -6,6 +6,9 @@ import {Component} from '@angular/core';
 })
 export class ProductListComponent {
   tableTitle: string = "Product List";
+  showImage: boolean = false;
+
+  
 
   products: any[] = [
     {
@@ -59,4 +62,8 @@ export class ProductListComponent {
       "imageUrl": "assets/images/xbox-controller.png"
     }
   ];
+
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
 }
