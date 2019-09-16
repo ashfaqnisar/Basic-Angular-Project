@@ -1,4 +1,8 @@
 import {Component} from '@angular/core';
+import {ProductData} from "./ProductData";
+
+interface productData {
+}
 
 @Component({
   selector: 'pm-product-list',
@@ -10,7 +14,7 @@ export class ProductListComponent {
   filter: string = "Test";
 
 
-  products: any[] = [
+  products: ProductData[] = [
     {
       "productId": 1,
       "productName": "Leaf Rake",
