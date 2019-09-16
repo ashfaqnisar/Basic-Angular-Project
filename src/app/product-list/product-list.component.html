@@ -7,13 +7,13 @@
       <div class="col-md-2">Filter by:</div>
       <div class="col-md-4">
         <label>
-          <input type="text">
+          <input type="text" [(ngModel)]='filter'><!--Banana in a box-->
         </label>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <h3>Filtered by: </h3>
+        <h3>Filtered by: {{filter}}</h3>
       </div>
     </div>
     <div class="table-responsive" *ngIf="products && products.length">
@@ -21,7 +21,9 @@
         <thead>
         <tr>
           <th>
-            <button (click)="toggleImage()" class="btn btn-primary">{{showImage ? 'Hide' : 'Show'}} Image</button>
+            <button (click)="toggleImage()" class="btn btn-primary">
+              {{showImage ? 'Hide' : 'Show'}} Image
+            </button>
           </th>
           <th>Product</th>
           <th>Code</th>
@@ -44,7 +46,7 @@
           <td>{{product.productName}}</td>
           <td>{{product.productCode}}</td>
           <td>{{product.releaseDate}}</td>
-          <td>${{product.price}}</td>
+          <td>{{product.price | currency: 'Rs ':'symbol':'1.2-2'}}</td>
           <td>{{product.starRating}}</td>
         </tr>
         </tbody>

@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {ProductListComponent} from './product-list/product-list.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,9 @@ import {ProductListComponent} from './product-list/product-list.component';
     ProductListComponent//Declaring all the components
   ],
   imports: [
-    BrowserModule//Application runs correctly in the browser
+    BrowserModule,
+    FormsModule,
+//Application runs correctly in the browser
   ],
   bootstrap: [AppComponent]//Way the components should be called
 })

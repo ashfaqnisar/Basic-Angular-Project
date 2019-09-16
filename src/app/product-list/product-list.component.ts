@@ -7,8 +7,8 @@ import {Component} from '@angular/core';
 export class ProductListComponent {
   tableTitle: string = "Product List";
   showImage: boolean = false;
+  filter: string = "Test";
 
-  
 
   products: any[] = [
     {
@@ -17,7 +17,7 @@ export class ProductListComponent {
       "productCode": "GDN-0011",
       "releaseDate": "March 19, 2019",
       "description": "Leaf rake with 48-inch wooden handle.",
-      "price": 19.95,
+      "price": 19.9545,
       "starRating": 3.2,
       "imageUrl": "assets/images/leaf_rake.png"
     },
