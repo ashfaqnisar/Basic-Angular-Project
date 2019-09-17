@@ -10,7 +10,10 @@
         <p>Price: {{product.price | currency : "Rs ":"symbol"}} </p>
         <p>Product Code: {{product.productCode}}</p>
         <p>Available at {{product.releaseDate}}</p>
-        <p>Rating: <pm-star [rating]="product.starRating"></pm-star></p>
+        <div class="row">
+          <p>Rating: </p>
+        </div>
+        <pm-star [rating]='product.starRating'></pm-star>
       </div>
       <div class="col-md-6 p-2 ">
         <img [src]="product.imageUrl"

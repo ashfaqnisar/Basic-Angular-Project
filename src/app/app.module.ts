@@ -2,44 +2,26 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {ProductListComponent} from './product/product-list/product-list.component';
-import {FormsModule} from "@angular/forms";
-import {ConvertToSpacesPipe} from "./Pipes/ConvertToSpacesPipe";
-import {StarComponent} from "./shared/star.component";
-import {ProductListService} from "./product/product-list/product-list.service";
 import {HttpClientModule} from "@angular/common/http";
-import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import {WelcomeComponent} from "./home/welcome.component";
-import {RouterModule, Routes} from "@angular/router";
-import {ProductDetailGuard} from "./product/product-detail/product-detail.guard";
-
-const routes: Routes = [
-  {path: 'products',component:ProductListComponent},
-  {path: 'products/:id',canActivate:[ProductDetailGuard], component:ProductDetailComponent},
-  {path: 'welcome',component:WelcomeComponent},
-  {path: '',redirectTo:'welcome',pathMatch:'full'},
-  {path: '**',redirectTo:'welcome',pathMatch:'full'}
-];
+import {ProductModule} from "./product/product.module";
+import {AppRoutingModule} from "./app-routing.module";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductListComponent,
-    ConvertToSpacesPipe,
-    StarComponent,
-    WelcomeComponent,
-    ProductDetailComponent
+    declarations: [
+        AppComponent,
+        WelcomeComponent,
 //Declaring all the components
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes)
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        ProductModule,
+        AppRoutingModule
 //Application runs correctly in the browser
-  ],
-  bootstrap: [AppComponent]//Way the components should be called
+    ],
+    bootstrap: [AppComponent]//Way the components should be called
 })
 export class AppModule {
 }
