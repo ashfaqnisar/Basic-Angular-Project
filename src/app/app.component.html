@@ -1,8 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:left">
-  <h1>
-    Product Management
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <a class="navbar-brand">
+    {{pageTitle}}
+  </a>
+  <ul class="nav navbar-nav">
+    <li><a class="nav-link btn btn-outline-primary m-3" style="user-focus: white;" routerLink="/welcome">Home</a></li>
+    <li><a class="nav-link btn btn-outline-primary m-3" routerLink="/products">Products</a></li>
+  </ul>
 
-  </h1>
-  <pm-product-list></pm-product-list>
-</div>
+</nav>
+<router-outlet></router-outlet>

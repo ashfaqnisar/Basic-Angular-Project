@@ -17,13 +17,20 @@ export class ProductListComponent implements OnInit {
 
   products: ProductData[];
   filteredProducts: ProductData[];
+  private errorMessage: any;
 
   constructor(private productListService:ProductListService) {
   }
 
   ngOnInit(): void {//Best way to assign the variables
-    this.products = this.productListService.getProducts();
-    this.filteredProducts = this.products
+    this.productListService.getProducts().subscribe({
+      next: products =>{
+        this.products = products;
+        this.filteredProducts = this.products;
+      },
+      error: err => {this.errorMessage = err}
+    });
+
   }
 
   toggleImage(): void {
